@@ -89,7 +89,7 @@ endif()
 target_link_libraries(${LIBNAME}
   PUBLIC
     ${PROJECT_NAME}::Decode
-    ROOT::Libraries
+    ${ROOT_LIBRARIES}
   )
 set_target_properties(${LIBNAME} PROPERTIES
   SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -108,6 +108,7 @@ install(FILES ${allheaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 #----------------------------------------------------------------------------
 # libHallADict
 build_root_dictionary(${LIBNAME} ${headers}
+  INCLUDEDIRS -I${CMAKE_CURRENT_SOURCE_DIR} -I${CMAKE_SOURCE_DIR}/hana_decode
   TARGETS ${LIBNAME}
   LINKDEF ${LIBNAME}_LinkDef.h
   )

@@ -27,9 +27,10 @@ set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/${MAIN_PROJECT_NAME_LC})
 #----------------------------------------------------------------------------
 # Find ROOT (using our custom FindROOT.cmake)
 set(minimum_root_version 5.10)
-find_package(ROOT ${minimum_root_version} REQUIRED)
+find_package(ROOT ${minimum_root_version} REQUIRED CONFIG)
+include(${ROOT_USE_FILE})
 # Register this dependency - it's in our public interface
-config_add_dependency(ROOT ${minimum_root_version})
+#config_add_dependency(ROOT ${minimum_root_version})
 
 #----------------------------------------------------------------------------
 # Set up the compiler flags
